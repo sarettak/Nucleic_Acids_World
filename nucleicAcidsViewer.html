@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang = "en">
+  <head>
+    <meta charset=utf-8>
+    <title> Nucleic Acids Viewer </title>
+
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+
+      canvas {
+        width: 100%;
+        height: 100%;
+      }
+
+      #adenineText {
+        margin-top:-37px;
+        color: rgb(213, 56, 88);
+        font-family: Times New Roman;
+        font-size: 32px;
+        position:relative; 
+        left:80px; 
+        top:50px;
+        visibility: visible;
+      }
+
+      #adenineFormula {
+        margin-top:-39px;
+        font-family: Times New Roman;
+        font-size: 26px;
+        border-radius: 10px;
+        border: 2px rgb(213, 56, 88) solid;
+        position:relative; 
+        left:210px; 
+        top:50px;
+        padding-left: 10px;
+        width: 9%;
+        visibility: hidden;
+      }
+
+      #thymineText {
+        margin-top:-37px;
+        color: rgb(122, 228, 109);
+        font-family: Times New Roman;
+        font-size: 32px;
+        position:relative; 
+        left:630px; 
+        top:50px;
+        visibility: visible;
+      }
+
+      #thymineFormula {
+        margin-top:-39px;
+        font-family: Times New Roman;
+        font-size: 26px;
+        border-radius: 10px;
+        border: 2px rgb(122, 228, 109) solid;
+        position:relative; 
+        left:770px; 
+        top:50px;
+        padding-left: 10px;
+        width: 12%;
+        visibility: hidden;
+      }
+
+      #guanineText {
+        margin-top:-37px;
+        color: rgb(185, 74, 186);
+        font-family: Times New Roman;
+        font-size: 32px;
+        position:relative; 
+        left:80px; 
+        top:390px;
+        visibility: visible;
+      }
+
+      #guanineFormula {
+        margin-top:-39px;
+        font-family: Times New Roman;
+        font-size: 26px;
+        border-radius: 10px;
+        border: 2px rgb(185, 74, 186) solid;
+        position:relative; 
+        left:210px; 
+        top:390px;
+        padding-left: 10px;
+        width: 11%;
+        visibility: hidden;
+      }
+
+      #cytosineText {
+        margin-top:-37px;
+        color: rgb(68, 218, 212);
+        font-family: Times New Roman;
+        font-size: 32px;
+        position:relative; 
+        left:630px; 
+        top:390px;
+        visibility: visible;
+      }
+
+      #cytosineFormula {
+        margin-top:-39px;
+        font-family: Times New Roman;
+        font-size: 26px;
+        border-radius: 10px;
+        border: 2px rgb(68, 218, 212) solid;
+        position:relative; 
+        left:770px; 
+        top:390px;
+        padding-left: 10px;
+        width: 11%;
+        visibility: hidden;
+      }
+
+      #uracilText {
+        margin-top:-37px;
+        color: rgb(0, 104, 221);
+        font-family: Times New Roman;
+        font-size: 32px;
+        position:relative; 
+        left:630px; 
+        top:50px;
+        visibility: hidden;
+      }
+
+      #uracilFormula {
+        margin-top:-39px;
+        font-family: Times New Roman;
+        font-size: 26px;
+        border-radius: 10px;
+        border: 2px rgb(0, 104, 221) solid;
+        position:relative; 
+        left:740px; 
+        top:50px;
+        padding-left: 10px;
+        width: 12%;
+        visibility: hidden;
+      }
+
+      #carbon {
+        color: rgba(154, 88, 0, 1);
+      }
+
+      #hydrogen {
+        color: rgba(58, 91, 187, 1);
+      }
+
+      #nitrogen {
+        color: rgba(255, 255, 255, 1);
+      }
+
+      #oxygen {
+        color: rgba(220, 1, 1, 1);
+      }
+
+
+      #backButton {
+        font-family: Times New Roman;
+        font-size: 20px;
+        border-radius: 15px;
+        border: 2px rgb(255, 255, 255) solid;
+        background-color: rgb(255,255,255);
+        color: rgb(137, 31, 129);
+        padding: 0 20px;
+        height: 38px;
+        position:absolute; 
+        left:1050px; 
+        top:590px;
+        visibility: visible;
+      }
+
+      #backButton:hover {
+        background-color: #ebebeb;
+      }
+
+
+    </style>
+  </head>
+
+  <body>
+    <div id="adenineText"><b><i> Adenine </i></b></div>
+    <div id="adenineFormula"><b> 
+      <span id="carbon"> C<SUB>5</SUB> </span> <span id="hydrogen"> H<SUB>5</SUB> </span><span id="nitrogen">  N<SUB>5</SUB> </span>
+    </b></div>
+
+    <div id="thymineText"><b><i> Thymine </i></b></div>
+    <div id="thymineFormula"><b> 
+      <span id="carbon"> C<SUB>5</SUB> </span> <span id="hydrogen"> H<SUB>6</SUB> </span> <span id="nitrogen">  N<SUB>2</SUB> </span> <span id="oxygen">  O<SUB>2</SUB> </span>
+    </b></div>
+
+    <div id="guanineText"><b><i> Guanine </i></b></div>
+    <div id="guanineFormula"><b> 
+      <span id="carbon"> C<SUB>5</SUB> </span> <span id="hydrogen"> H<SUB>5</SUB> </span> <span id="nitrogen">  N<SUB>5</SUB> </span> <span id="oxygen">  O </span>
+    </b></div> 
+
+    <div id="cytosineText"><b><i> Cytosine </i></b></div>
+    <div id="cytosineFormula"><b> 
+      <span id="carbon"> C<SUB>4</SUB> </span> <span id="hydrogen"> H<SUB>5</SUB> </span> <span id="nitrogen">  N<SUB>3</SUB> </span> <span id="oxygen">  O </span>
+    </b></div> 
+
+    <div id="uracilText"><b><i> Uracil </i></b></div>
+    <div id="uracilFormula"><b> 
+      <span id="carbon"> C<SUB>4</SUB> </span> <span id="hydrogen"> H<SUB>4</SUB> </span> <span id="nitrogen">  N<SUB>2</SUB> </span> <span id="oxygen">  O<SUB>2</SUB> </span>
+    </b></div> 
+
+
+    <input type="button" id="backButton" value="Return Back" href="index.html">
+      
+
+    <!-- Three js files -->
+    <script src="js/three.js"></script>
+    <script src="js/three.min.js"></script>
+    <script src="js/dat.gui.min.js"></script>
+    <script src="js/OrbitControls.js"></script>
+    <script src="js/Tween.js"></script>
+
+    <!-- Project files -->
+    <script src = "nucleicAcids.js"></script> 
+    <script src = "interface.js"></script> 
+
+    <script>
+
+      /* Support function to change page at the click of the button "Return Back" */
+      function goBack(){
+          window.location.href = "index.html"; 
+      }
+
+      var back = document.getElementById("backButton");
+      back.addEventListener("click", goBack);
+
+    </script>
+  </body>
+</html>

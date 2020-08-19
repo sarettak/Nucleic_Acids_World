@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset="UTF-8">
+        <title> Nucleic Acids Information </title>
+
+        <style>
+            body {
+                margin: 0;
+                overflow: hidden;
+                background-image: url('backgroundMenu.jpg');
+            }
+
+            canvas {
+                width: 100%;
+                height: 100%;
+            }
+
+            h1 {
+                font-family: Times New Roman;
+                font-size: 60px;
+                background: linear-gradient(to bottom, #090E1E 0%, #899DDC 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+
+            
+            .textTitle {
+                position: relative;
+                top: -30px;
+                left: 300px;
+            }
+
+
+            ul {
+                list-style-type: none;
+                width: 250px; /* Set a width if you like */
+                position: absolute;
+                top: 115px;
+                left: 950px;
+            }
+
+            ul a {
+                background-color: #ccc; /* Grey background color */
+                color: black; /* Black text color */
+                display: block; /* Make the links appear below each other */
+                padding: 12px; /* Add some padding */
+                text-decoration: none; /* Remove underline from links */
+            }
+
+            ul a:hover {
+                background-color: rgba(225, 225, 225, 0.8); /* Dark blue background on mouse-over */
+            }
+
+            ul a.active {
+                background-color: #090E1E; /* Add a dark blue color to the "active current"link */
+                color: white;
+                text-align: center;
+            }
+
+            h3 {
+                text-align: center;
+            }
+
+
+            #myScene {
+                position: absolute;
+                top: 0;
+                border: 2px black solid;
+                border-radius: 5px;
+                background-color: rgba(0, 0, 0, 0.8);
+                width: 200px;
+                height: 690px;
+                margin-left: 50px;
+                margin-top: 20px;
+                margin-bottom: 200px;
+            }
+
+            #infoDNA {
+                position: absolute;
+                top: 130px;
+                border: 2px black solid;
+                border-radius: 5px;
+                padding: 10px;
+                margin-left: 300px;
+                margin-right: 330px;
+                background-color: rgba(22, 35, 75, 0.8);
+                font-size: 16px;
+                font-family: Times New Roman;
+                color: white;
+                visibility: visible;
+            }
+
+            #infoRNA {
+                position: absolute;
+                top: 130px;
+                border: 2px black solid;
+                border-radius: 5px;
+                padding: 10px;
+                margin-left: 300px;
+                margin-right: 330px;
+                background-color: rgba(22, 35, 75, 0.8);
+                font-size: 16px;
+                font-family: Times New Roman;
+                color: white;
+                visibility: hidden;
+            }
+
+            #infoAdenine {
+                position: absolute;
+                top: 130px;
+                border: 2px black solid;
+                border-radius: 5px;
+                padding: 10px;
+                margin-left: 300px;
+                margin-right: 330px;
+                background-color: rgba(22, 35, 75, 0.8);
+                font-size: 16px;
+                font-family: Times New Roman;
+                color: white;
+                visibility: hidden;
+            }
+
+            #infoThymine {
+                position: absolute;
+                top: 130px;
+                border: 2px black solid;
+                border-radius: 5px;
+                padding: 10px;
+                margin-left: 300px;
+                margin-right: 330px;
+                background-color: rgba(22, 35, 75, 0.8);
+                font-size: 16px;
+                font-family: Times New Roman;
+                color: white;
+                visibility: hidden;
+            }
+
+            #infoCytosine {
+                position: absolute;
+                top: 130px;
+                border: 2px black solid;
+                border-radius: 5px;
+                padding: 10px;
+                margin-left: 300px;
+                margin-right: 330px;
+                background-color: rgba(22, 35, 75, 0.8);
+                font-size: 16px;
+                font-family: Times New Roman;
+                color: white;
+                visibility: hidden;
+            }
+
+            #infoGuanine {
+                position: absolute;
+                top: 130px;
+                border: 2px black solid;
+                border-radius: 5px;
+                padding: 10px;
+                margin-left: 300px;
+                margin-right: 330px;
+                background-color: rgba(22, 35, 75, 0.8);
+                font-size: 16px;
+                font-family: Times New Roman;
+                color: white;
+                visibility: hidden;
+            }
+
+            #infoUracil {
+                position: absolute;
+                top: 130px;
+                border: 2px black solid;
+                border-radius: 5px;
+                padding: 10px;
+                margin-left: 300px;
+                margin-right: 330px;
+                background-color: rgba(22, 35, 75, 0.8);
+                font-size: 16px;
+                font-family: Times New Roman;
+                color: white;
+                visibility: hidden;
+            }
+
+
+            #backButton {
+                font-family: Times New Roman;
+                font-size: 20px;
+                border-radius: 15px;
+                border: 2px rgb(255, 255, 255) solid;
+                background-color: rgb(0,0,0);
+                color: rgb(255, 255, 255);
+                padding: 0 20px;
+                height: 38px;
+                position:absolute; 
+                left:1050px; 
+                top:590px;
+                visibility: visible;
+            }
+
+            #backButton:hover {
+                background-color: rgba(0,0,0,0.7);
+                border-color: black;
+            }
+
+
+        </style>
+    </head>
+
+    <body>
+        <h1 class="textTitle"><b><i> Nucleic Acids and Nitrogenous Bases </i></b></h1>
+
+        <div id="myScene"> </div>
+
+        <ul>
+            <li><a href="#" class="active"> <i><b> Read about </b></i> </a></li>
+            <li><a href="#" onclick="showDNA()"><b> DeoxyriboNucleic Acid (DNA) </b></a></li>
+            <li><a href="#" onclick="showRNA()"><b> RiboNucleic Acid (RNA) </b></a></li>
+            <li><a href="#" onclick="showAdenine()"><b> Adenine </b></a></li>
+            <li><a href="#" onclick="showThymine()"><b> Thymine </b></a></li>
+            <li><a href="#" onclick="showGuanine()"><b> Guanine </b></a></li>
+            <li><a href="#" onclick="showCytosine()"><b> Cytosine </b></a></li>
+            <li><a href="#" onclick="showUracil()"><b> Uracil </b></a></li>
+        </ul>
+
+
+        
+         
+        <div id="infoDNA">
+            <h3> DeoxiriboNucleic Acid </h3>
+            DNA, or deoxyribonucleic acid, is made up of two chains that coil around each other to form a 
+            <i>double helix</i> carrying genetic instructions for the grouth of all organisms.
+            Its molecular structure was first identified by Francis Crick and James Watson at the Cavendish Laboratry within the University of Cambridge in 1953.
+            DNA is one of the two known nucleic acids (the other one is RNA) and it's important to underline that nucleic acids are one of the four major types of macromolecules that are essential for all forms of life.
+            The two DNA strands are also known as <i>polynucleotides</i> as they are composed of simpler units called <i>nucleotides</i>. Each nucleotide is formed by one of four nucleobases (<i>cytosine, guanine, adenine</i> or <i>thymine</i>), a sugar called <i> deoxyribose</i> and a <i>phosphate group</i>. The nucleotides are joined to one another in a chain by <i>covalent bonds</i> between the sugar of one nucleotide and the phosphate of the next, resulting in an alternating <i>sugar-phosphate backbone</i>. The nitrogenous bases of the two separate polynucleotide strands are bound together, according to <i>base pairing rules</i>: (A with T and C with G), with <i>hydrogen bonds</i> to make double-stranded DNA. The complementary nitrogenous bases are divided into two groups, <i>pyrimidines</i> and <i>purines</i>. In DNA, the pyrimidines are: thymine and cytosine; the purines are: adenine and guanine.
+            Both strands of double-stranded DNA store the same <i>biological information</i> and it is replicated when the two strands separate and it's critical because each new cell needs to have an exact copy of DNA present in the old cell. Attached to each sugar there is one of the four types of nucleobases, also known as <i>bases</i> and it's the sequence of thos four nucleobases along the backbone that encodes genetic information.
+            Most DNA is located in the <i>cell nucleus</i> (where it is called nuclear DNA), but a small amount can also be found in the <i>mitochondria</i> (where it is called mitochondrial DNA or mtDNA). Mitochondria are structures within cells that convert the energy from food into a form that cells can use. 
+            Human DNA consists of about 3 billion bases, and more than 99 percent of nitrogenous bases are the same in all people. The order, or sequence, of these bases determines the information available for building and maintaining an organism, similar to the way in which letters of the alphabet appear in a certain order to form words and sentences.
+
+        </div>
+
+        
+        <div id="infoRNA">
+            <h3> RiboNucleic Acid </h3>
+            RNA, or ribonucleic acid, is a <i>polymeric molecule</i> essential in various biological roles in <i> coding, decoding, regulation</i> and expression of <i>genes</i>. RNA and DNA are <i>nucleic acids</i> and along with <i>lipids, proteins</i> and <i>carbohydrates</i>, constitute the four major <i>macromolecules</i> important for all known forms of life. Like DNA, RNA is assembled as a chain of <i>nucleotides</i>, but unlinke DNA, it is more often found in nature as a <i>single-strand</i> folded onto itself, rather than a paired double.strand.
+            RNA is made up of four chemical bases, adenine (A), cytosine (C), guanine (G) and uracil (U) connected by a ribose backbone. It is transcribed from DNA following the Watson–Crick pairing rule but replacing thymidine (T) with uracil (U). 
+            There are four types of RNA: <i>messenger (m)RNA</i>, <i>transfer (t)RNA</i>, <i>ribosomal (r)RNA</i>, and <i>small nuclear (sn)RNA</i>. Together, these serve to carry the genetic information stored by DNA in the cell nucleus to other parts of the cell where it is converted into protein, as for example mRNA is used by cellular organisms to convey genetic information that directs synthesis of specific proteins. Some RNA molecules play an active role within cells by catalyzing biological reactions, controlling gene expression, or sensing and communicating responses to cellular signals. One of these active processes is protein synthesis, a universal function in which RNA molecules direct the synthesis of proteins on <i>ribosomes</i>. This process uses transfer RNA (tRNA) molecules to deliver amino acids to the ribosome, where ribosomal RNA (rRNA) then links amino acids together to form coded proteins.
+            Many viruses encode their genetic information using an RNA <i>genome</i>.
+            
+        </div>
+        
+
+        <div id="infoAdenine">
+            <h3> Adenine </h3>
+            Adenine is one of <i>purine bases</i> found in nucleic acids. When attached to ribose, it is the <i>nucleoside adenosine</i> (A), when attached to deoxyribose, it is the nucleotide <i>deoxyadenosine</i> (dA). The phosphate esters of those nucleosides are the <i>nucleotides adenylic acid</i> (adenosine + phosphate; AMP) and deoxyadenylic acid (deoxyadenosine + phosphate; dAMP). The triphosphate forms of adenosine (ATP) and deoxyadenosine (dATP) are substrates for the synthesis of RNA and DNA, respectively.
+            Adenine can be found in the nucleic acids with the three other bases: guanine, thymine, cytosine. Its shape is complementary to either <i>thymine</i> in DNA or <i>uracil</i> in RNA.
+            Adenine molecular formula is: C<SUB>5</SUB> H<SUB>5</SUB> N<SUB>5</SUB>.
+        </div>
+
+        <div id="infoThymine">
+            <h3> Thymine </h3>
+            Thymine is one of <i>pyrimidine bases</i> found in the nucleic acid DNA in the form of a deoxynucleotydyl residue, paired with <i>adenine</i>. Thymine can be also found in trace quantities within transfer RNA. Chemically, it can be considered to be a derivative of <i>uracil</i> and is sometimes referred to as 5-methyluracil. Because thymine is a critically important constituent of DNA, considerable effort has been put into the design of drugs that might selectively inhibit thymine <i>biosynthesis</i>, thereby blocking DNA replication, especially in rapidly diving malignant cells.
+            Thymine can be found in the nucleic acid DNA with the three other bases: guanine, adenine, cytosine. In RNA, it is replaced by the nucleobase <i>uracil</i>.
+            Thymine molecular formula is: C<SUB>5</SUB> H<SUB>6</SUB> N<SUB>2</SUB> O<SUB>2</SUB> .
+        </div>
+
+        <div id="infoCytosine">
+            <h3> Cytosine </h3>
+            Cytosine is one of the <i>pyrimidine bases</i> and one of the nitrogenous bases found in ribonucleic acid (RNA) and deoxyribonucleic acid (DNA). In nucleic acids, cytosine can form three <i>hydrogen bonds</i> to base pair with <i>guanine</i>. However, the bases are present in nucleic acids as <i>nucleotides</i>. When combined with sugar ribose in a glycosidic linkage, cytosine forms a nucleoside called <i>cytidine</i>. Cytidine can be phosphorylated at the 5′ position of the sugar with from one to three phosphoric acid groups, yielding three nucleotides: cytidine 5<SUP>th</SUP> monophosphate (CMP), cytidine 5<SUP>th</SUP> diphosphate (CDP), and cytidine 5<SUP>th</SUP> triphosphate (CTP). Free cytosine is not synthesized directly in cells; instead CTP is typically synthesized by amination of uridylate 5<SUP>th</SUP> triphosphate (UTP). CTP is a substrate of RNA polymerase and is the source of the cytosine found in RNA. Analogous nucleosides and nucleotides are formed from cytosine and deoxyribose, and dCTP, a substrate of DNA polymerase, is the source of the cytosine in DNA. The deoxyribonucleotides are formed by the reduction of ribonucleoside diphosphates. In addition to its role in nucleic acid synthesis, CTP is also involved in both carbohydrate and lipid metabolism.
+            Cytosine molecular formula is: C<SUB>4</SUB> H<SUB>5</SUB> N<SUB>3</SUB> O.
+        </div>
+
+        <div id="infoGuanine">
+            <h3> Guanine </h3>
+            Guanine is one of the <i>purine bases</i> found within RNA in the form of a ribonucleotidyl residue and in DNA in the form of a deoxynucleotidyl residue. In DNA, guanine is usually base-paired via three <i>hydrogen bonds</i> with the pyrimidine <i>cytosine</i>. A number of low-molecular-weight, guanine-containing <i>nucleotide coenzymes</i> are also found within cells, where they serve as substrates for RNA and DNA biosynthesis, energy sources in protein biosynthesis, and donors of sugar residues in the synthesis of polysaccharides. Guanine residues in DNA are uniquely susceptible to alteration by reactive oxygen species. When guanine in DNA undergoes oxidation to 8-oxoguanine, its base-pairing properties change and it acquires the ability to pair with adenine. Most cells have an active base-excision repair system that removes 8-oxoguanine residues from DNA, thereby avoiding the potentially hazardous creation of a transversion mutation.
+            Guanine molecular formula is: C<SUB>5</SUB> H<SUB>5</SUB> N<SUB>5</SUB> O.
+        </div>
+
+        <div id="infoUracil">
+            <h3> Uracil </h3>
+            Uracil is a naturally occurring representative of the heterocyclic nitrogen-containing aromatic bases termed <i>pyrimidines</i>. Although found predominantly in RNA, uracil is also a major constituent of the DNA of certain <i>bacterial viruses</i>. In every other species, uracil is a transient constituent of DNA, arising through the random deamination of cytosine residues. Efficient surveillance and repair systems exist within most cells to prevent uracil residues from accumulating within DNA. Because the base-pairing properties of uracil are identical to those of <i>thymine</i>, replication of DNA containing a G:U base pair would give rise to a daughter molecule containing an A:U base pair and a granddaughter molecule containing an A:T base pair. If the original G:C base pair happened to be indispensable, the failure to replace U would be lethal.
+            Uracil molecular formula is: C<SUB>4</SUB> H<SUB>4</SUB> N<SUB>2</SUB> O<SUB>2</SUB>.
+        </div>
+
+        <input type="button" id="backButton" value="Return Back" href="index.html">
+
+        <!-- Three js files -->
+        <script src="js/three.js"></script>
+        <script src="js/three.min.js"></script>
+
+        <!-- Project files -->
+        <script src = "information.js"></script> 
+        <script src = "adenine.js"></script> 
+        <script src = "thymine.js"></script> 
+        <script src = "guanine.js"></script> 
+        <script src = "cytosine.js"></script> 
+        <script src = "uracil.js"></script> 
+
+        <!-- Functions -->
+        <script type="text/javascript">
+            function showDNA() {
+                isDna = true;
+                isRna = false;
+                isAdenine = false;
+                isThymine = false;
+                isCytosine = false;
+                isGuanine = false;
+                isUracil = false;
+            }
+
+            function showRNA() {
+                isDna = false;
+                isRna = true;
+                isAdenine = false;
+                isThymine = false;
+                isCytosine = false;
+                isGuanine = false;
+                isUracil = false;
+            }
+
+            function showAdenine() {
+                isDna = false;
+                isRna = false;
+                isAdenine = true;
+                isThymine = false;
+                isCytosine = false;
+                isGuanine = false;
+                isUracil = false;
+            }
+
+            function showThymine() {
+                isDna = false;
+                isRna = false;
+                isAdenine = false;
+                isThymine = true;
+                isCytosine = false;
+                isGuanine = false;
+                isUracil = false;
+            }
+
+            function showCytosine() {
+                isDna = false;
+                isRna = false;
+                isAdenine = false;
+                isThymine = false;
+                isCytosine = true;
+                isGuanine = false;
+                isUracil = false;
+            }
+
+            function showGuanine() {
+                isDna = false;
+                isRna = false;
+                isAdenine = false;
+                isThymine = false;
+                isCytosine = false;
+                isGuanine = true;
+                isUracil = false;
+            }
+
+            function showUracil() {
+                isDna = false;
+                isRna = false;
+                isAdenine = false;
+                isThymine = false;
+                isCytosine = false;
+                isGuanine = false;
+                isUracil = true;
+            }
+
+            /* Support function to change page at the click of the button "Return Back" */
+            function goBack(){
+                window.location.href = "index.html"; 
+            }
+
+            var back = document.getElementById("backButton");
+            back.addEventListener("click", goBack);
+        </script>
+    </body>
+</html>
